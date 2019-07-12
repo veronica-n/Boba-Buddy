@@ -79,8 +79,8 @@ class _LogInScreenState extends State<LogInScreen> {
             children: buildInputs() + buildSubmitButtons(),
 
           ),
-        ),
-      ),
+        )
+      )
     );
   }
 
