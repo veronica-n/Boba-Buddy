@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myflutter_app/screens/log_in.dart';
+import 'package:myflutter_app/screens/options_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() {
@@ -30,9 +31,12 @@ class MyApp extends StatelessWidget {
 
         '/': (context) => LogInScreen(),
         '/log_in': (context) => LogInScreen(),
-       // '/sign_up': (context) => SignUpScreen(),
+        '/options': (context) => BobaQuiz(),
 
       },
     );
   }
 }
+
+
+

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:myflutter_app/screens/options_page.dart';
+
 
 
 class LogInScreen extends StatefulWidget {
@@ -67,35 +69,70 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.white,
       appBar: new AppBar(
-        title: new Text('Log in Page'),
+        title: new Text("Boba Buddy"),
+        backgroundColor: Colors.pink[300],
       ),
-      body: new Container(
+      body:
+
+      new Container(
         padding: EdgeInsets.all(16),
         child: new Form(
           key: formKey,
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: buildInputs() + buildSubmitButtons(),
-
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children:   imageIn() + imageIn2() + start()
           ),
+
         )
       )
+
     );
+  }
+
+  List <Widget> imageIn() {
+    return[
+    Image.asset('assets/Images/GIF.gif',height: 400, width: 400,)
+    ];
+
+  }
+
+  List <Widget> imageIn2() {
+    return[
+      Image.asset('assets/Images/boba buddy text.jpg',height: 110, width: 65,)
+    ];
+
+  }
+
+  List <Widget> start() {
+    return[
+      new RaisedButton(
+        child: new Text('Click here to start a delicious experience!', style: new TextStyle(fontSize: 30, color: Colors.pinkAccent.withOpacity(0.8)), textAlign: TextAlign.center,),
+        onPressed: () { navigateToQuiz(context);},
+      ),
+    ];
+
+  }
+
+
+  Future navigateToQuiz(context) async {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => BobaQuiz()));
   }
 
 
   List <Widget> buildInputs() {
     return [
       new TextFormField(
-        decoration: new InputDecoration(labelText: 'Email'),
-        validator: (value) => value.isEmpty ? 'Email cant be empty' : null,
+        decoration: new InputDecoration(labelText: 'Please write your email'),
+        validator: (value) => value.isEmpty ? 'Email can not be empty!' : null,
         onSaved: (value) => _email = value,
       ),
 
       new TextFormField(
-        decoration: new InputDecoration(labelText: 'Password'),
-        validator: (value) => value.isEmpty ? 'Password cant be empty' : null,
+        decoration: new InputDecoration(labelText: 'Please write your password'),
+        validator: (value) => value.isEmpty ? 'Password can not  be empty' : null,
         obscureText: true,
         onSaved: (value) => _password = value,
       ),
